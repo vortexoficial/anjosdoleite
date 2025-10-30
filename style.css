@@ -784,7 +784,6 @@ strong {
 
 .about-image img {
     border-radius: 10px;
-
     width: 100%;
 }
 
@@ -811,6 +810,53 @@ strong {
     border-radius: 0 8px 8px 0;
     margin: 2rem 0;
 }
+
+
+/* ... (regra .about-quote) ... */
+
+
+/* ==============================================
+   NOVA SEÇÃO (Extensão da Biografia)
+   ============================================== */
+.about-extended-section {
+    padding: 0 0 60px 0; /* Espaçamento da seção (sem topo) */
+    background-color: var(--color-white); /* Garante fundo branco */
+}
+
+.about-extended-content {
+    background-color: var(--color-bg-light); /* Fundo cinza clarinho */
+    border-radius: 15px; /* Cantos arredondados */
+    padding: 30px;
+    max-width: 800px; /* Limita a largura do bloco */
+    margin: 0 auto; /* Centraliza o bloco */
+}
+
+/* Deixa o título "Minha Trajetória" azul */
+.about-extended-content .text-blue {
+    color: var(--color-blue);
+}
+
+.about-extended-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo para os números COREN no final */
+.coren-info {
+    font-size: 0.95rem;
+    color: var(--color-text-medium);
+    border-top: 1px solid #ddd;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+/* ============================================== */
+
+
+/* Responsividade (Desktop para a página "Quem Sou") */
+@media (min-width: 768px) {
+
 
 /* Responsividade (Desktop para a página "Quem Sou") */
 @media (min-width: 768px) {
@@ -862,20 +908,22 @@ strong {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
-/* ANTES (por volta da linha 699) */
-.service-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 20px auto;
-}
 
 /* Ícone do Card de Serviço */
 .service-icon-fa {
-    /* ... (regras de fonte) ... */
-    font-size: 3.5rem; 
+    /* Força o ícone a aparecer */
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900;                  
+    
+    font-size: 3.5rem; /* Tamanho do ícone */
     color: var(--color-pink); /* MUDADO DE AZUL PARA ROSA */
     margin: 0 auto 20px auto;
-    /* ... (regras de alinhamento) ... */
+    line-height: 1;
+    width: 70px; /* Mantém o espaçamento */
+    height: 70px; /* Mantém o espaçamento */
+    display: flex; /* Centraliza o ícone dentro do espaço */
+    align-items: center;
+    justify-content: center;
 }
 
 /* Título do Card de Serviço */
@@ -897,25 +945,52 @@ strong {
     font-size: 0.9rem;
 }
 
-/* Seção da Citação */
-.page-quote-section {
-    background-color: var(--color-bg-light);
-    padding: 60px 0;
-    text-align: center;
-}
 
-.page-quote-section blockquote {
+/* ==============================================
+   SEÇÃO DE CITAÇÃO (ATUALIZADA COM IMAGEM)
+   ============================================== */
+
+/* --- MUDANÇA 1 (MOBILE): Fundo, Posição e Overlaps --- */
+.page-quote-section {
+    background-color: #000000; /* Fundo Preto */
+    padding: 80px 0 60px 0; /* Padding superior maior para o overlap */
+    text-align: center; 
+    position: relative; /* Para o overlap */
+}
+.quote-wrapper {
+    max-width: 800px; 
+    margin: 0 auto;
+}
+.quote-image {
+    margin-bottom: 0; /* Removido pois o texto vai sobrepor */
+    margin-top: -20px; /* Sobe 20px (overlap) */
+    position: relative;
+    z-index: 1;
+}
+.quote-image img {
+    width: 100%;
+    max-width: 378px; /* Tamanho exato pedido */
+    height: auto;
+    border-radius: 0; /* Imagem limpa */
+    object-fit: contain;
+    margin: 0 auto; 
+    border: none; /* Imagem limpa */
+}
+.quote-content {
+    margin-top: -20px; /* Sobe 20px (overlap) */
+    position: relative;
+    z-index: 2; /* Texto na frente da imagem */
+}
+.quote-content blockquote {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-text-dark);
+    color: var(--color-white); /* Texto branco */
     line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
 }
-
-.page-quote-section cite {
+.quote-content cite {
     display: block;
     font-size: 1.1rem;
     color: var(--color-pink);
@@ -924,10 +999,15 @@ strong {
     font-weight: 600;
 }
 
+
 /* Responsividade (Desktop para a página "Serviços") */
 @media (min-width: 768px) {
-    .services-section, .page-quote-section {
+    .services-section {
         padding: 80px 0;
+    }
+    /* --- MUDANÇA 2 (DESKTOP): Padding e Alinhamento --- */
+    .page-quote-section {
+        padding: 80px 0; /* Padding normal no desktop */
     }
 
     .services-grid {
@@ -936,8 +1016,30 @@ strong {
         gap: 30px;
     }
 
-    .page-quote-section blockquote {
-        font-size: 1.8rem;
+    /* --- MUDANÇA 3 (DESKTOP): Layout Grid --- */
+    .quote-wrapper {
+        display: grid;
+        grid-template-columns: 378px 1fr; /* Imagem com tamanho fixo, texto flexível */
+        align-items: center; /* Centraliza o texto verticalmente */
+        gap: 50px;
+        max-width: 1000px; 
+    }
+    .quote-image {
+        margin-top: 0; /* Reseta o overlap do mobile */
+    }
+    /* --- MUDANÇA 4 (DESKTOP): Imagem --- */
+    .quote-image img {
+        width: 378px; /* Tamanho exato */
+        max-width: 378px;
+        height: auto;
+        margin: 0; 
+    }
+    .quote-content {
+        text-align: left; /* Alinhado à esquerda */
+        margin-top: 0; /* Reseta o overlap do mobile */
+    }
+    .quote-content blockquote {
+        font-size: 1.8rem; /* Tamanho do texto maior */
     }
 }
 
