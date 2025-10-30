@@ -202,11 +202,11 @@ strong {
 
 .btn-secondary {
     background-color: var(--color-white);
-    color: var(--color-pink); /* MUDADO */
-    border-color: var(--color-pink); /* MUDADO */
+    color: var(--color-pink); 
+    border-color: var(--color-pink); 
 }
 .btn-secondary:hover {
-    background-color: var(--color-pink); /* MUDADO */
+    background-color: var(--color-pink); 
     color: var(--color-white);
     transform: translateY(-3px);
 }
@@ -756,7 +756,7 @@ strong {
 }
 
 /* ==============================================
-   CORREÇÃO HERO PÁGINA RESULTADOS
+   CORREÇÃO HERO PÁGINA RESULTADOS, SERVIÇOS, ETC.
    ============================================== */
 .results-header {
     background-color: var(--color-blue); /* FUNDO AZUL */
@@ -798,25 +798,8 @@ strong {
     margin-bottom: 1.5rem;
 }
 
-.about-quote {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 600;
-    color: var(--color-blue);
-    padding: 20px;
-    border-left: 4px solid var(--color-pink);
-    background-color: var(--color-bg-light);
-    border-radius: 0 8px 8px 0;
-    margin: 2rem 0;
-}
-
-
-/* ... (regra .about-quote) ... */
-
-
 /* ==============================================
-   NOVA SEÇÃO (Extensão da Biografia)
+   SEÇÃO (Extensão da Biografia) - QUEM SOU
    ============================================== */
 .about-extended-section {
     padding: 0 0 60px 0; /* Espaçamento da seção (sem topo) */
@@ -824,16 +807,12 @@ strong {
 }
 
 .about-extended-content {
-    background-color: var(--color-bg-light); /* Fundo cinza clarinho */
+    background-color: #FAFAFA; /* Cinza mais claro */
+    border: 1px solid #F0F0F0; /* Borda bem sutil */
     border-radius: 15px; /* Cantos arredondados */
     padding: 30px;
     max-width: 800px; /* Limita a largura do bloco */
     margin: 0 auto; /* Centraliza o bloco */
-}
-
-/* Deixa o título "Minha Trajetória" azul */
-.about-extended-content .text-blue {
-    color: var(--color-blue);
 }
 
 .about-extended-content p {
@@ -851,11 +830,36 @@ strong {
     margin-top: 1.5rem;
     line-height: 1.6;
 }
-/* ============================================== */
 
+/* ==============================================
+   SEÇÃO CITAÇÃO FINAL (Quem Sou)
+   ============================================== */
+.quote-cta-section {
+    padding: 40px 0 60px 0;
+    background-color: var(--color-white);
+    text-align: center;
+}
+.quote-cta-section .about-quote {
+    max-width: 600px; /* Limita a largura da citação */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem; /* Espaço entre citação e botão */
+    text-align: left; /* Texto da citação alinhado à esquerda */
+}
 
-/* Responsividade (Desktop para a página "Quem Sou") */
-@media (min-width: 768px) {
+/* Citação original (agora usada apenas na .quote-cta-section) */
+.about-quote {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-blue);
+    padding: 20px;
+    border-left: 4px solid var(--color-pink);
+    background-color: var(--color-bg-light);
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0;
+}
 
 
 /* Responsividade (Desktop para a página "Quem Sou") */
@@ -950,12 +954,13 @@ strong {
    SEÇÃO DE CITAÇÃO (ATUALIZADA COM IMAGEM)
    ============================================== */
 
-/* --- MUDANÇA 1 (MOBILE): Fundo, Posição e Overlaps --- */
+/* --- MUDANÇA (MOBILE): Fundo, Posição e Overlaps --- */
 .page-quote-section {
-    background-color: #000000; /* Fundo Preto */
+    background-color: var(--color-black); /* Fundo Preto */
     padding: 80px 0 60px 0; /* Padding superior maior para o overlap */
     text-align: center; 
     position: relative; /* Para o overlap */
+    overflow: hidden; /* Garante que o fundo preto cubra tudo */
 }
 .quote-wrapper {
     max-width: 800px; 
@@ -980,6 +985,7 @@ strong {
     margin-top: -20px; /* Sobe 20px (overlap) */
     position: relative;
     z-index: 2; /* Texto na frente da imagem */
+    padding: 0 10px; /* Garante que o texto não cole nas bordas no mobile */
 }
 .quote-content blockquote {
     font-family: var(--font-heading);
@@ -1005,7 +1011,7 @@ strong {
     .services-section {
         padding: 80px 0;
     }
-    /* --- MUDANÇA 2 (DESKTOP): Padding e Alinhamento --- */
+    /* --- MUDANÇA (DESKTOP): Padding e Alinhamento --- */
     .page-quote-section {
         padding: 80px 0; /* Padding normal no desktop */
     }
@@ -1016,7 +1022,7 @@ strong {
         gap: 30px;
     }
 
-    /* --- MUDANÇA 3 (DESKTOP): Layout Grid --- */
+    /* --- MUDANÇA (DESKTOP): Layout Grid --- */
     .quote-wrapper {
         display: grid;
         grid-template-columns: 378px 1fr; /* Imagem com tamanho fixo, texto flexível */
@@ -1027,7 +1033,7 @@ strong {
     .quote-image {
         margin-top: 0; /* Reseta o overlap do mobile */
     }
-    /* --- MUDANÇA 4 (DESKTOP): Imagem --- */
+    /* --- MUDANÇA (DESKTOP): Imagem --- */
     .quote-image img {
         width: 378px; /* Tamanho exato */
         max-width: 378px;
@@ -1037,6 +1043,7 @@ strong {
     .quote-content {
         text-align: left; /* Alinhado à esquerda */
         margin-top: 0; /* Reseta o overlap do mobile */
+        padding: 0; /* Reseta padding do mobile */
     }
     .quote-content blockquote {
         font-size: 1.8rem; /* Tamanho do texto maior */
@@ -1435,7 +1442,10 @@ strong {
     transition-timing-function: ease !important;
 }
 
-.swiper-slide {
+/* ==============================================
+   BUG FIX: Regra de slide específica
+   ============================================== */
+.curiosity-swiper .swiper-slide {
     /* Formato 1080x1350 (4:5) */
     aspect-ratio: 1080 / 1350;
     
@@ -1447,7 +1457,7 @@ strong {
     transition: transform 0.4s ease;
 }
 
-.swiper-slide img {
+.curiosity-swiper .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1459,7 +1469,7 @@ strong {
 
 /* Ajuste para Mobile */
 @media (max-width: 768px) {
-    .swiper-slide {
+    .curiosity-swiper .swiper-slide {
         /* Largura menor no mobile */
         width: 280px; 
     }
