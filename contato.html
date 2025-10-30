@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <title>Contato - Fale com Sandra Abreu | Anjos do Leite</title>
+    <meta name="description" content="Entre em contato com a Anjos do Leite. Agende sua assessoria de amamentação via WhatsApp, formulário ou redes sociais.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    
+    <div id="loader-wrapper">
+        <div class="loader-logo">
+            <img src="img/logo.png" alt="Anjos do Leite Logo Loader">
+        </div>
+        <div class="loader-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="Anjos do Leite Logo">
+            </a>
+            
+            <nav class="main-nav">
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list" id="nav-list" aria-expanded="false">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quem-sou.html">Quem Sou</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="resultados.html">Resultados</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="page-header results-header">
+            <div class="container">
+                <h1>Fale Conosco</h1>
+                <p>Seu sucesso na amamentação começa aqui. Envie sua dúvida!</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container contact-grid">
+                
+                <div class="contact-info">
+                    <h3>Canais de Atendimento</h3>
+                    <p>Entre em contato diretamente pelo WhatsApp para um atendimento mais rápido ou siga-nos no Instagram para dicas diárias.</p>
+                    
+                    <a href="https://wa.me/5513997261037" target="_blank" class="btn btn-contact whatsapp-btn">
+                        <img src="img/icon-whatsapp.png" alt="WhatsApp">
+                        Chamar no WhatsApp
+                    </a>
+                    
+                    <a href="https://instagram.com/anjosdoleite" target="_blank" class="btn btn-contact instagram-btn">
+                        <img src="img/icon-instagram.png" alt="Instagram">
+                        Seguir no Instagram
+                    </a>
+                    
+                    <div class="contact-details">
+                        <p><strong><i class="fa-solid fa-phone"></i> Telefone:</strong> +55 13 99726-1037</p>
+                        <p><strong><i class="fa-solid fa-location-dot"></i> Atendimento:</strong> Domicílio, Maternidade e Consultório (Baixada Santista)</p>
+                        <p><strong><i class="fa-solid fa-globe"></i> Atendimento Online:</strong> Para todo o Brasil e Mundo</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h3>Envie uma Mensagem</h3>
+                    <p>Prefere detalhar seu caso? Preencha o formulário abaixo e retornaremos o mais breve possível.</p>
+                    
+                    <form id="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Seu Nome:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Seu WhatsApp (com DDD):</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Seu E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Assunto:</label>
+                            <select id="subject" name="subject">
+                                <option value="Assessoria Pós-Parto">Assessoria Pós-Parto</option>
+                                <option value="Preparação na Gestação">Preparação na Gestação</option>
+                                <option value="Manejo de Dificuldades">Manejo de Dificuldades</option>
+                                <option value="Dúvidas">Outras Dúvidas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Sua Mensagem:</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <img src="img/logo.png" alt="Anjos do Leite Logo" class="footer-logo">
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">Navegue</h4>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="quem-sou.html">Quem Sou</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="resultados.html">Resultados</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">Contato e Redes</h4>
+              <div class="social-media">
+                    <a href="https://instagram.com/anjosdoleite" target="_blank" aria-label="Instagram Anjos do Leite" class="social-link">
+                        <img src="img/icon-instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://wa.me/5513997261037" target="_blank" aria-label="WhatsApp Anjos do Leite" class="social-link">
+                        <img src="img/icon-whatsapp.png" alt="WhatsApp">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar">
+            <p>&copy; 2024 Anjos do Leite. Todos os direitos reservados. Desenvolvido por Futura Design.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1702 @@
+/* ==============================================
+   Anjos do Leite - CSS Global (Mobile-First)
+   ============================================== */
+
+/* ========= 1. VARIÁVEIS E RESET ========= */
+
+:root {
+    /* Paleta de Cores */
+    --color-pink: #e647a3;
+    --color-blue: #007FCC;
+    --color-black: #1C1C1C;
+    --color-text-dark: #333333; /* Mais suave que o preto puro */
+    --color-text-medium: #666666;
+    --color-white: #FFFFFF;
+    --color-bg-light: #F8F8F8; /* Fundo secundário */
+    
+    /* Tipografia */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Transições */
+    --transition-fast: all 0.3s ease;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* 16px */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    color: var(--color-text-dark);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container */
+.container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Imagens Responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-black);
+    line-height: 1.3;
+    font-weight: 700;
+    margin-bottom: 0.75em;
+}
+
+h1 { font-size: 2.5rem; } /* 40px no mobile */
+h2 { font-size: 2.0rem; } /* 32px no mobile */
+h3 { font-size: 1.5rem; } /* 24px no mobile */
+h4 { font-size: 1.125rem; } /* 18px no mobile */
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-blue);
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-pink);
+}
+
+ul {
+    list-style: none;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.text-pink { color: var(--color-pink); }
+.text-blue { color: var(--color-blue); }
+
+/* Utilitário para Título de Seção */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem; /* 40px */
+    color: var(--color-black);
+}
+
+/* ========= 2. LOADER ANIMADO ========= */
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out 0.3s, visibility 0.5s ease-out 0.3s;
+}
+
+#loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo img {
+    max-width: 150px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.loader-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.loader-dots .dot {
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-pink);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+    animation-fill-mode: both; /* Garante que comece escalado em 0 */
+}
+
+.loader-dots .dot:nth-child(2) {
+    animation-delay: -0.16s;
+    background-color: var(--color-blue);
+}
+
+.loader-dots .dot:nth-child(3) {
+    animation-delay: -0.32s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* ========= 3. COMPONENTES (Botões, Header) ========= */
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    transition: var(--transition-fast);
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-pink);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(228, 53, 204, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #c92bab; /* Rosa mais escuro */
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(228, 53, 204, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-pink); /* MUDADO */
+    border-color: var(--color-pink); /* MUDADO */
+}
+.btn-secondary:hover {
+    background-color: var(--color-pink); /* MUDADO */
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+/* Header */
+.main-header {
+    background-color: var(--color-white);
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Tamanho mobile */
+}
+
+/* Menu de Navegação (Mobile) */
+.nav-toggle {
+    display: flex; /* Visível no mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-black);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do "X" do Hamburguer */
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.main-nav .nav-list {
+    display: none; /* Escondido no mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 70px; /* Altura do header */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.main-nav.active .nav-list {
+    display: flex; /* Visível quando o menu está ativo */
+}
+
+.main-nav .nav-list a {
+    display: block;
+    padding: 15px 20px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.main-nav .nav-list a.active,
+.main-nav .nav-list a:hover {
+    background-color: var(--color-bg-light);
+    color: var(--color-pink);
+}
+
+
+.hero-section {
+    padding: 60px 0;
+    text-align: center;
+    background: var(--color-bg-light); /* Fundo padrão (fallback) */
+    position: relative; /* Necessário para o vídeo de fundo */
+    overflow: hidden; /* Garante que o vídeo não vaze */
+}
+
+/* Vídeo de Fundo */
+.hero-section.has-video-bg {
+    background: #333; /* Cor escura enquanto o vídeo carrega */
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre toda a área */
+}
+
+/* Overlay Escuro (para legibilidade) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece 40% */
+    z-index: 1;
+}
+
+/* Conteúdo (Texto) */
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* Garante que o texto fique na frente do vídeo/overlay */
+}
+
+/* === Classe para Inverter Cores do Texto === */
+.hero-text-light .hero-title,
+.hero-text-light .hero-subtitle,
+.hero-text-light .hero-description {
+    color: var(--color-white);
+}
+/* Deixa o "25 mil famílias" destacado */
+.hero-text-light .hero-description strong {
+    color: var(--color-white);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-medium);
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+/* ========= 5. FOOTER (Rodapé) ========= */
+.main-footer {
+    background-color: var(--color-black);
+    color: var(--color-bg-light);
+    padding: 50px 0 0 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+}
+
+.footer-logo {
+    height: 60px;
+    margin: 0 auto;
+    
+    /* Adicione esta linha para forçar o logo a ficar 100% branco */
+    filter: brightness(0) invert(1);
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 15px;
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-nav a {
+    color: var(--color-bg-light);
+    opacity: 0.8;
+}
+.footer-nav a:hover {
+    color: var(--color-white);
+    opacity: 1;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.social-link img {
+    width: 32px;
+    height: 32px;
+    transition: var(--transition-fast);
+}
+.social-link:hover img {
+    transform: scale(1.1);
+}
+
+.footer-whatsapp-link {
+    color: var(--color-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.copyright-bar {
+    border-top: 1px solid #444;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.875rem; /* 14px */
+    color: var(--color-text-medium);
+}
+
+/* ========= 4. SEÇÕES DA HOME (Mobile) ========= */
+
+/* Hero Section */
+/* ... (CSS da Hero Section continua o mesmo) ... */
+.hero-section { padding: 60px 0; text-align: center; background: var(--color-bg-light); position: relative; overflow: hidden; }
+.hero-section.has-video-bg { background: #333; }
+.hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-video-bg video { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 1; }
+.hero-section .container { position: relative; z-index: 2; }
+.hero-text-light .hero-title,
+.hero-text-light .hero-subtitle,
+.hero-text-light .hero-description { color: var(--color-white); }
+.hero-text-light .hero-description strong { color: var(--color-white); }
+.hero-subtitle { font-size: 1.2rem; color: var(--color-text-medium); margin-bottom: 1.5rem; }
+.hero-description { font-size: 1.1rem; margin-bottom: 2rem; }
+
+/* Highlights Section */
+.highlights-section {
+    padding: 60px 0;
+    background-color: var(--color-white);
+}
+
+.highlights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Card Padrão (1 e 3): Fundo branco, borda azul */
+.highlight-item {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 15px;
+    
+    /* Centraliza o texto (para o h3 e o p) */
+    text-align: center; 
+    
+    border: 1px solid var(--color-blue);
+    transition: var(--transition-fast);
+    
+    /* Configuração Flex */
+    display: flex;
+    flex-direction: column;
+    
+    /* A LINHA CORRETA: */
+    /* Centraliza os itens (o ícone, o h3, o p) no eixo horizontal */
+    align-items: center; 
+    
+    height: 100%;
+    color: var(--color-text-dark); /* Cor do <p> */
+}
+
+/* Card do Meio (2): Fundo rosa, texto branco */
+.highlights-grid .highlight-item:nth-child(2) {
+    background-color: var(--color-pink);
+    border-color: var(--color-pink);
+    color: var(--color-white); /* Cor do <p> */
+}
+
+.highlight-item p {
+    flex-grow: 1;
+}
+
+/* Hover (Cards 1 e 3) */
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    background-color: var(--color-pink);
+    border-color: var(--color-pink);
+    color: var(--color-white); /* Cor do <p> */
+}
+
+/* Hover (Card 2) */
+.highlights-grid .highlight-item:nth-child(2):hover {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+}
+
+/* --- ÍCONES (FONT AWESOME) --- */
+.highlight-icon {
+    /* ======================================= */
+    /* FORÇANDO AS REGRAS DO ÍCONE        */
+    /* ======================================= */
+    font-family: "Font Awesome 6 Free"; /* <-- Linha mais importante */
+    font-weight: 900;                  /* <-- Linha mais importante */
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    /* ======================================= */
+
+    /* Estilos que já estavam aqui */
+    margin-bottom: 25px; 
+    display: inline-block; 
+    font-size: 3.5rem;
+    color: var(--color-blue);
+    transition: color 0.3s ease;
+}
+
+/* Card do Meio (Normal): Cor Branca */
+.highlights-grid .highlight-item:nth-child(2) .highlight-icon {
+    color: var(--color-white);
+}
+
+/* Hover (Cards 1 e 3): Cor Branca */
+.highlight-item:hover .highlight-icon {
+    color: var(--color-white);
+}
+
+/* Hover (Card 2): Cor Branca */
+.highlights-grid .highlight-item:nth-child(2):hover .highlight-icon {
+    color: var(--color-white); /* Continua branco no hover azul */
+}
+
+/* --- TÍTULOS --- */
+
+/* Título padrão (azul) */
+.highlight-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-blue); /* Padrão (Cards 1 e 3) */
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Título do Card do Meio (branco) */
+.highlights-grid .highlight-item:nth-child(2) .highlight-title {
+    color: var(--color-white);
+}
+
+/* Título dos Cards 1 e 3 no hover (branco) */
+.highlight-item:hover .highlight-title {
+    color: var(--color-white);
+}
+
+/* Título do Card 2 no hover (branco) */
+.highlights-grid .highlight-item:nth-child(2):hover .highlight-title {
+    color: var(--color-white);
+}
+
+
+/* ==============================================
+   SEÇÃO PRÉVIA DE SERVIÇOS (HOME)
+   ============================================== */
+.services-preview-section {
+    padding: 60px 0;
+    /* COR ATUALIZADA */
+    background-color: var(--color-pink); /* Fundo rosa (MUDADO DE AZUL PARA ROSA) */
+    text-align: center;
+    position: relative; /* Para a animação */
+    overflow: hidden; /* Para a animação */
+}
+
+.services-preview-section .container {
+    position: relative;
+    z-index: 2; /* Conteúdo na frente das bolhas */
+}
+
+.services-preview-icon {
+    font-family: "Font Awesome 6 Free"; /* Força o ícone */
+    font-weight: 900;                  /* Força o ícone */
+    font-size: 3.5rem;
+    /* COR ATUALIZADA */
+    color: var(--color-white); /* Ícone branco */
+    margin-bottom: 25px;
+}
+
+.services-preview-title {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    /* COR ATUALIZADA */
+    color: var(--color-white); /* Título branco */
+    margin-bottom: 1rem;
+}
+
+.services-preview-text {
+    font-size: 1.1rem;
+    /* COR ATUALIZADA */
+    color: var(--color-white); /* Texto branco */
+    opacity: 0.9; /* Um pouco mais suave para diferenciar do título */
+    max-width: 650px; /* Limita a largura do texto */
+    margin: 0 auto 2rem auto; /* Centraliza e adiciona espaço antes do botão */
+}
+
+
+/* ==============================================
+   6. RESPONSIVIDADE (Desktop)
+   ============================================== */
+
+@media (min-width: 768px) {
+    /* Base */
+    h1 { font-size: 3.5rem; } /* 56px */
+    h2 { font-size: 2.5rem; } /* 40px */
+    h3 { font-size: 1.75rem; } /* 28px */
+    .section-title { font-size: 2.5rem; margin-bottom: 4rem; }
+
+    /* Header & Nav */
+    .logo img {
+        height: 60px; /* Logo maior no desktop */
+    }
+    
+    .nav-toggle {
+        display: none; /* Esconde o hamburguer */
+    }
+    
+    .main-nav .nav-list {
+        display: flex;
+        flex-direction: row; /* Links lado a lado */
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 15px;
+    }
+    
+    .main-nav .nav-list a {
+        padding: 10px 15px;
+        position: relative;
+    }
+
+    .main-nav .nav-list a:hover,
+    .main-nav .nav-list a.active {
+        background-color: transparent;
+        color: var(--color-pink);
+    }
+    
+    /* Animação de sublinhado no desktop */
+    .main-nav .nav-list a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: var(--color-pink);
+        transition: width 0.3s ease;
+    }
+    
+    .main-nav .nav-list a:hover::after,
+    .main-nav .nav-list a.active::after {
+        width: 100%;
+    }
+
+    /* Hero */
+    .hero-section {
+        padding: 100px 0;
+    }
+    .hero-subtitle { font-size: 1.4rem; }
+    .hero-description { max-width: 800px; margin-left: auto; margin-right: auto; }
+
+    /* Highlights */
+    .highlights-section, .testimonials-preview, .cta-section {
+        padding: 80px 0;
+    }
+    
+    .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* CTA */
+    .cta-title { font-size: 2.5rem; }
+
+    /* Wrapper Botões CTA (Página Resultados) */
+    .cta-buttons-wrapper {
+        flex-direction: row; /* Lado a lado */
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .footer-logo {
+        margin: 0;
+    }
+    .footer-nav ul {
+        flex-direction: column;
+    }
+    .social-media {
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Ajustes finos para telas grandes */
+    h1 { font-size: 3.8rem; }
+}
+
+/* ==============================================
+   7. PÁGINA "QUEM SOU" E PÁGINAS INTERNAS
+   ============================================== */
+
+/* Cabeçalho da Página (Genérico para todas as páginas internas) */
+.page-header {
+    background-color: var(--color-bg-light); /* FUNDO CINZA PADRÃO */
+    padding: 40px 0;
+    text-align: center;
+}
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.25em;
+}
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--color-text-medium);
+    margin: 0;
+}
+
+/* ==============================================
+   CORREÇÃO HERO PÁGINA RESULTADOS
+   ============================================== */
+.results-header {
+    background-color: var(--color-blue); /* FUNDO AZUL */
+    padding: 60px 0; /* Mais espaço no mobile e desktop */
+}
+/* Textos brancos (HERO AZUL) */
+.results-header h1,
+.results-header p {
+    color: var(--color-white); 
+}
+
+
+/* Seção "Sobre" (Biografia) */
+.about-section {
+    padding: 60px 0;
+}
+
+/* Layout em Grid (Mobile: 1 coluna) */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.about-image img {
+    border-radius: 10px;
+
+    width: 100%;
+}
+
+.about-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-quote {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-blue);
+    padding: 20px;
+    border-left: 4px solid var(--color-pink);
+    background-color: var(--color-bg-light);
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0;
+}
+
+/* Responsividade (Desktop para a página "Quem Sou") */
+@media (min-width: 768px) {
+    .page-header {
+        padding: 60px 0;
+    }
+    .page-header h1 {
+        font-size: 3rem;
+    }
+
+    .about-section {
+        padding: 80px 0;
+    }
+
+   .about-grid {
+        grid-template-columns: 1.2fr 1fr; /* Imagem MAIOR, texto menor */
+        gap: 50px;
+    }
+}
+
+/* ==============================================
+   8. PÁGINA "SERVIÇOS"
+   ============================================== */
+
+.services-section {
+    padding: 60px 0;
+}
+
+.services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    padding: 30px;
+    text-align: center;
+    transition: var(--transition-fast);
+    /* Flexbox para alinhar botões em cards de mesma altura */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+/* ANTES (por volta da linha 699) */
+.service-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px auto;
+}
+
+/* Ícone do Card de Serviço */
+.service-icon-fa {
+    /* ... (regras de fonte) ... */
+    font-size: 3.5rem; 
+    color: var(--color-pink); /* MUDADO DE AZUL PARA ROSA */
+    margin: 0 auto 20px auto;
+    /* ... (regras de alinhamento) ... */
+}
+
+/* Título do Card de Serviço */
+.service-title {
+    font-size: 1.5rem;
+    color: var(--color-pink); /* MUDADO DE AZUL PARA ROSA */
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    /* Faz o parágrafo "crescer" e empurrar o botão para baixo */
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+/* Estilo de botão menor para os cards */
+.btn-small {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+}
+
+/* Seção da Citação */
+.page-quote-section {
+    background-color: var(--color-bg-light);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-quote-section blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.page-quote-section cite {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--color-pink);
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Responsividade (Desktop para a página "Serviços") */
+@media (min-width: 768px) {
+    .services-section, .page-quote-section {
+        padding: 80px 0;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .page-quote-section blockquote {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==============================================
+   9. PÁGINA "RESULTADOS"
+   ============================================== */
+
+/* Seção de Estatísticas */
+.stats-section {
+    background-color: var(--color-white);
+    padding: 60px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==============================================
+   CORREÇÃO ÍCONES PÁGINA RESULTADOS
+   ============================================== */
+.stat-icon-fa {
+    /* Força o ícone a aparecer */
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900;                  
+    
+    /* Tamanho Mobile (GRANDE) */
+    font-size: 4rem; 
+    
+    /* Cor Rosa (como os números) */
+    color: var(--color-pink); 
+    
+    margin-bottom: 15px;
+    line-height: 1; 
+}
+
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-pink);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--color-text-medium);
+    font-weight: 600;
+}
+
+/* Seção de Depoimentos (REGRAS ANTIGAS REMOVIDAS) */
+
+
+/* Responsividade (Desktop para a página "Resultados") */
+@media (min-width: 768px) {
+    .stats-section {
+        padding: 80px 0;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* ==============================================
+   10. PÁGINA "CONTATO"
+   ============================================== */
+
+.contact-section {
+    padding: 60px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.contact-info h3,
+.contact-form-wrapper h3 {
+    font-size: 1.8rem;
+    color: var(--color-blue);
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Botões de Contato Grandes */
+.btn-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 16px;
+    font-size: 1.1rem;
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-contact img {
+    width: 24px;
+    height: 24px;
+}
+
+.whatsapp-btn {
+    background-color: #25D366; /* Cor oficial WhatsApp */
+}
+.whatsapp-btn:hover {
+    background-color: #1EAE54;
+    color: var(--color-white);
+}
+
+.instagram-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.instagram-btn:hover {
+    opacity: 0.9;
+    color: var(--color-white);
+}
+
+/* Detalhes de Contato (ícones pequenos) */
+.contact-details {
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+}
+
+.contact-details p {
+    font-size: 1rem;
+    display: block; /* Para permitir o empilhamento */
+    color: var(--color-text-medium);
+
+    /* Borda azul (#007FCC) com 50% de opacidade */
+    border: 1px solid rgba(0, 127, 204, 0.5); 
+
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 12px 15px; /* Espaçamento interno */
+    margin-bottom: 12px; /* Espaço entre os itens */
+}
+/* Adicione esta regra para remover a margem do último item */
+.contact-details p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-details p strong {
+    display: flex; /* Alinha o ícone e o texto do título */
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto do título */
+    font-weight: 600;
+    color: var(--color-text-dark); /* Título mais escuro */
+    margin-bottom: 5px; /* Espaço entre o título e a descrição */
+}
+
+/* Regra ajustada para o Ícone */
+.contact-details i.fa-solid {
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900;
+    font-size: 1rem; 
+    color: var(--color-blue);
+    opacity: 0.9; 
+
+    /* Ajustes (não precisa mais de margem ou largura fixa) */
+    width: auto; 
+    text-align: left;
+    margin-top: 0; 
+}
+
+/* Formulário */
+.contact-form-wrapper {
+    background-color: var(--color-bg-light);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar só na vertical */
+}
+
+/* Botão de Envio do Formulário */
+.contact-form-wrapper .btn-primary {
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+/* Responsividade (Desktop para a página "Contato") */
+@media (min-width: 768px) {
+    .contact-section {
+        padding: 80px 0;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: flex-start; /* Alinha os topos */
+    }
+    
+    .contact-form-wrapper {
+        padding: 40px;
+    }
+}
+
+/* ==============================================
+   11. PÁGINA "FAQ"
+   ============================================== */
+
+.faq-section {
+    padding: 60px 0;
+}
+
+.faq-container {
+    max-width: 800px; /* Limita a largura para melhor leitura */
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #eee;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-question {
+    /* Estilização do botão */
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 20px 0;
+    
+    /* Layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    
+    /* Texto */
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.faq-question:hover {
+    color: var(--color-pink);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-blue);
+    transition: transform 0.3s ease;
+}
+
+/* Estilo do ícone quando ativo (girar) */
+.faq-question.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--color-pink);
+}
+
+.faq-answer {
+    /* Esconde a resposta por padrão */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.faq-answer p {
+    padding: 0 0 20px 0; /* Espaçamento interno da resposta */
+    line-height: 1.8;
+}
+
+/* Responsividade (Desktop para a página "FAQ") */
+@media (min-width: 768px) {
+    .faq-section {
+        padding: 80px 0;
+    }
+    
+    .faq-question {
+        font-size: 1.25rem;
+        padding: 25px 0;
+    }
+}
+
+       
+/* ==============================================
+   14. AJUSTE TÍTULO HERO (QUEBRA DE LINHA)
+   ============================================== */
+
+/* --- MOBILE (Padrão) --- */
+
+/* Por padrão, esconde a quebra do desktop */
+.hero-title .br-desktop {
+    display: none;
+}
+/* Por padrão, mostra as quebras do mobile */
+.hero-title .br-mobile {
+    display: block;
+}
+
+
+/* --- DESKTOP --- */
+@media (min-width: 768px) {
+    
+    /* Esconde as quebras do mobile */
+    .hero-title .br-mobile {
+        display: none;
+    }
+    
+    /* Mostra a quebra do desktop */
+    .hero-title .br-desktop {
+        display: block;
+    }
+    
+    /* Garante que o span não tenha quebras internas no desktop */
+    .hero-title .text-pink {
+        display: inline-block;
+    }
+}
+
+.curiosity-carousel-section {
+    padding: 60px 0;
+    background-color: var(--color-bg-light);
+    overflow: hidden; 
+}
+
+.curiosity-carousel-section .container {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.curiosity-carousel-section .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-medium);
+    margin: 0;
+}
+.curiosity-carousel-section .section-subtitle strong {
+    color: var(--color-blue);
+}
+
+/* Container principal do Swiper */
+.curiosity-swiper {
+    width: 100%;
+}
+
+/* Remove a transição linear forçada */
+.curiosity-swiper .swiper-wrapper {
+    transition-timing-function: ease !important;
+}
+
+.swiper-slide {
+    /* Formato 1080x1350 (4:5) */
+    aspect-ratio: 1080 / 1350;
+    
+    /* Largura BEM MAIOR no Desktop */
+    width: 450px; 
+    
+    /* Slides 100% visíveis, sem fade */
+    opacity: 1 !important; 
+    transition: transform 0.4s ease;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* Cantos arredondados que você pediu */
+    border-radius: 20px; 
+}
+
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .swiper-slide {
+        /* Largura menor no mobile */
+        width: 280px; 
+    }
+}
+
+/* --- Ajuste do Subtítulo Hero --- */
+
+/* Por padrão (Mobile), esconde a quebra de linha */
+.hero-subtitle .br-desktop-subtitle {
+    display: none;
+}
+
+/* --- DESKTOP --- */
+@media (min-width: 768px) {
+    
+    /* Mostra a quebra de linha do subtítulo no desktop */
+    .hero-subtitle .br-desktop-subtitle {
+        display: block;
+    }
+}
+
+/* ==============================================
+   DEPOIMENTOS (Layout Google Light)
+   ============================================== */
+
+.testimonials-preview {
+    padding: 60px 0;
+    background-color: var(--color-bg-light); /* Fundo cinza claro */
+    text-align: center; 
+}
+.testimonials-preview .container {
+    position: relative; /* Container é a referência para as setas */
+}
+
+/* Sumário 5.0 Estrelas */
+.google-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.google-summary-score {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1.1;
+}
+
+.google-summary-stars {
+    font-size: 1.25rem;
+    color: #FDB64B; /* Amarelo Dourado Google */
+    margin-bottom: 5px;
+}
+
+.google-summary-reviews {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+}
+
+/* Configuração do Carrossel */
+.testimonials-swiper {
+    width: 100%;
+    padding-bottom: 50px; /* Espaço para a paginação (bolinhas) */
+}
+
+.testimonials-swiper .swiper-slide {
+    height: auto; /* Permite que os cards cresçam */
+}
+
+/* O card "Google" */
+.google-review-card {
+    background: var(--color-white);
+    border: 1px solid #E0E0E0; /* Cinza claro do Google */
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%; /* Garante altura igual no slide */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+.gr-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.gr-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* Cor/Imagem de fundo é definida inline no HTML */
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0; /* Impede que o avatar encolha */
+    background-size: cover;
+    background-position: center;
+}
+
+.gr-user-info {
+    flex-grow: 1;
+}
+
+.gr-user-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.gr-time {
+    font-size: 0.875rem; /* 14px */
+    color: var(--color-text-medium);
+}
+
+.gr-rating-time {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.gr-stars {
+    color: #FDB64B; /* Cor amarela do Google */
+    font-size: 0.9rem;
+}
+
+.gr-stars .fa-solid {
+    margin-right: 2px;
+}
+
+.gr-body {
+    flex-grow: 1; 
+}
+
+.gr-text {
+    font-size: 0.95rem; /* 15px */
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+/* Paginação (Bolinhas) */
+.testimonials-swiper .swiper-pagination-bullet {
+    background-color: #ccc;
+    opacity: 0.7;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+    background-color: var(--color-blue);
+    opacity: 1;
+}
+
+/* ==============================================
+   ESCONDE AS SETAS DO CARROSSEL DEPOIMENTOS
+   ============================================== */
+
+.testimonials-nav-next,
+.testimonials-nav-prev {
+    display: none !important; /* Esconde as setas */
+}
+
+
+/* ==============================================
+   SEÇÃO FINAL CTA (Call to Action)
+   ============================================== */
+
+.cta-section {
+    padding: 60px 0; /* Task 2: Adiciona o espaçamento no mobile */
+    background-color: var(--color-white);
+    text-align: center; /* Task 1: Centraliza todo o conteúdo */
+}
+
+.cta-title {
+    font-size: 2rem; /* 32px (mobile) */
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    max-width: 500px; /* Evita quebra feia no mobile */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: var(--color-text-medium);
+    max-width: 650px; 
+    margin: 0 auto 2rem auto; /* Centraliza e adiciona espaço antes do botão */
+}
+
+
+/* ==============================================
+   ANIMAÇÃO DE FUNDO (BOLHAS FLUTUANTES)
+   ============================================== */
+
+/* 2. Garante que o conteúdo (ícone, texto, botão) fique NA FRENTE */
+.services-preview-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 3. Estiliza o container da animação */
+.floating-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Fica atrás do conteúdo */
+    margin: 0;
+    padding: 0;
+}
+
+/* 4. Estiliza as bolhas */
+.floating-bubbles li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 20px; /* Tamanho base */
+    height: 20px; /* Tamanho base */
+    
+    /* Cor da bolha: Branca com 15% de opacidade */
+    background: rgba(255, 255, 255, 0.15);
+    
+    /* Animação */
+    animation: floatUp 25s linear infinite;
+    bottom: -150px; /* Começa fora da tela, lá embaixo */
+}
+
+/* 5. Variações de tamanho, posição e velocidade das bolhas */
+.floating-bubbles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+.floating-bubbles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s; /* Mais rápida */
+}
+
+.floating-bubbles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.floating-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s; /* Média */
+}
+
+.floating-bubbles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.floating-bubbles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+    background: rgba(255, 255, 255, 0.1); /* Mais sutil */
+}
+
+.floating-bubbles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+    background: rgba(255, 255, 255, 0.08); /* Mais sutil ainda */
+}
+
+.floating-bubbles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s; /* Bem lenta */
+}
+
+.floating-bubbles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s; /* Lenta */
+}
+
+.floating-bubbles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s; /* Rápida */
+}
+
+/* 6. A Animação (Keyframes) */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        /* Move a bolha 100vh (altura da tela) + 150px (tamanho inicial) para cima */
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* ==============================================
+   ATUALIZAÇÕES PÁGINA RESULTADOS
+   ============================================== */
+
+/* Wrapper dos botões CTA */
+.cta-buttons-wrapper {
+    display: flex;
+    flex-direction: column; /* Empilhado no mobile */
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Espaço entre os botões */
+    margin-top: 3rem; /* Espaço acima */
+}
